@@ -4,14 +4,17 @@ import FeatureItems from "./FeatureItems";
 import FeatureName from "./FeatureName";
 import MainForm from "./MainForm";
 
+import FEATURES from "./FEATURES";
+
 class FeatureList extends React.Component {
   render() {
-    const features = Object.keys(this.props.features).map((feature, i) => {
+    const features = Object.keys(FEATURES).map((feature, i) => {
       const featureHash = feature + "-" + i;
-      const options = this.props.features[feature].map((item) => {
+      const options = FEATURES[feature].map((item, index) => {
         const itemHash = slugify(JSON.stringify(item));
         return (
           <FeatureItems
+            key={`featureItem-${index}`}
             itemHash={itemHash}
             feature={feature}
             item={item}
@@ -25,6 +28,7 @@ class FeatureList extends React.Component {
           featureHash={featureHash}
           feature={feature}
           options={options}
+          key={i}
         />
       );
     });

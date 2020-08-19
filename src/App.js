@@ -49,14 +49,10 @@ class App extends Component {
         <main>
           <FeatureList
             selected={this.state.selected}
-            features={this.props.features}
             updateFeature={this.updateFeature}
           />
 
-          <Summary
-            selected={this.state.selected}
-            features={this.props.features}
-          />
+          <Summary selected={this.state.selected} />
         </main>
       </div>
     );
